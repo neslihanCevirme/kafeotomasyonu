@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KafeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="KullaniciHareketleri">
+          <Key>
+            <PropertyRef Name="KullaniciHareketID" />
+          </Key>
+          <Property Name="KullaniciHareketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciId" Type="int" />
+          <Property Name="KullanciAciklama" Type="nvarchar(max)" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar(max)" />
+          <Property Name="Gorevi" Type="nvarchar(max)" />
+          <Property Name="Telefon" Type="nvarchar(max)" />
+          <Property Name="Adres" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="KullaniciAdi" Type="nvarchar(max)" />
+          <Property Name="Parola" Type="nvarchar(max)" />
+          <Property Name="KayitTarihi" Type="datetime" />
+          <Property Name="AktifMi" Type="bit" />
+          <Property Name="KullaniciAciklamasi" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MasaHareketleri">
+          <Key>
+            <PropertyRef Name="MasaHareketID" />
+          </Key>
+          <Property Name="MasaHareketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SatisKodu" Type="nvarchar(max)" />
+          <Property Name="MasaId" Type="int" />
+          <Property Name="Miktari" Type="int" />
+          <Property Name="BirimFiyati" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MasaAciklamasi" Type="nvarchar(max)" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Masalar">
+          <Key>
+            <PropertyRef Name="MasaID" />
+          </Key>
+          <Property Name="MasaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasaAd" Type="nchar" MaxLength="20" />
+          <Property Name="MasaAciklama" Type="nchar" MaxLength="250" />
+          <Property Name="Durumu" Type="bit" />
+          <Property Name="RezerveMi" Type="bit" />
+          <Property Name="EklenmeTarihi" Type="datetime" />
+          <Property Name="SonİslemTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Menuler">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuAciklamasi" Type="nchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="OdemeHareketleri">
+          <Key>
+            <PropertyRef Name="OdemeID" />
+          </Key>
+          <Property Name="OdemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SatisKod" Type="nvarchar(max)" />
+          <Property Name="OdemeTuru" Type="nvarchar(max)" />
+          <Property Name="Odenen" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OdemeAciklamasi" Type="nvarchar(max)" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Roller">
+          <Key>
+            <PropertyRef Name="RoID" />
+          </Key>
+          <Property Name="RoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciId" Type="int" Nullable="false" />
+          <Property Name="FromText" Type="nvarchar" MaxLength="50" />
+          <Property Name="ControlName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ControlCaption" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Satislar">
+          <Key>
+            <PropertyRef Name="SatisID" />
+          </Key>
+          <Property Name="SatisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SatisKodu" Type="nvarchar(max)" />
+          <Property Name="Tutar" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Odenen" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Kalan" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SatisAciklamasi" Type="nvarchar(max)" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="SonİslemTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Urunler">
+          <Key>
+            <PropertyRef Name="UrunID" />
+          </Key>
+          <Property Name="UrunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="UrunKodu" Type="nchar" MaxLength="20" />
+          <Property Name="UrunAdi" Type="nchar" MaxLength="20" />
+          <Property Name="BirimFiyati" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UrunAciklama" Type="nvarchar(max)" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="Menu" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_KullaniciHareketleri_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="KullaniciHareketleri" Type="Self.KullaniciHareketleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="KullaniciID" />
+            </Principal>
+            <Dependent Role="KullaniciHareketleri">
+              <PropertyRef Name="KullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasaHareketleri_Masalar">
+          <End Role="Masalar" Type="Self.Masalar" Multiplicity="0..1" />
+          <End Role="MasaHareketleri" Type="Self.MasaHareketleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Masalar">
+              <PropertyRef Name="MasaID" />
+            </Principal>
+            <Dependent Role="MasaHareketleri">
+              <PropertyRef Name="MasaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Menuler">
+          <End Role="Menuler" Type="Self.Menuler" Multiplicity="0..1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menuler">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KafeModelStoreContainer">
+          <EntitySet Name="KullaniciHareketleri" EntityType="Self.KullaniciHareketleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasaHareketleri" EntityType="Self.MasaHareketleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Masalar" EntityType="Self.Masalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menuler" EntityType="Self.Menuler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OdemeHareketleri" EntityType="Self.OdemeHareketleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roller" EntityType="Self.Roller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Satislar" EntityType="Self.Satislar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urunler" EntityType="Self.Urunler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_KullaniciHareketleri_Kullanicilar" Association="Self.FK_KullaniciHareketleri_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="KullaniciHareketleri" EntitySet="KullaniciHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasaHareketleri_Masalar" Association="Self.FK_MasaHareketleri_Masalar">
+            <End Role="Masalar" EntitySet="Masalar" />
+            <End Role="MasaHareketleri" EntitySet="MasaHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Menuler" Association="Self.FK_Urunler_Menuler">
+            <End Role="Menuler" EntitySet="Menuler" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="KullaniciHareketleri">
+          <Key>
+            <PropertyRef Name="KullaniciHareketID" />
+          </Key>
+          <Property Name="KullaniciHareketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullanciAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_KullaniciHareketleri_Kullanicilar" FromRole="KullaniciHareketleri" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gorevi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Parola" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KayitTarihi" Type="DateTime" Precision="3" />
+          <Property Name="AktifMi" Type="Boolean" />
+          <Property Name="KullaniciAciklamasi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KullaniciHareketleri" Relationship="Self.FK_KullaniciHareketleri_Kullanicilar" FromRole="Kullanicilar" ToRole="KullaniciHareketleri" />
+        </EntityType>
+        <EntityType Name="MasaHareketleri">
+          <Key>
+            <PropertyRef Name="MasaHareketID" />
+          </Key>
+          <Property Name="MasaHareketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SatisKodu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Miktari" Type="Int32" />
+          <Property Name="BirimFiyati" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MasaAciklamasi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Masalar" Relationship="Self.FK_MasaHareketleri_Masalar" FromRole="MasaHareketleri" ToRole="Masalar" />
+        </EntityType>
+        <EntityType Name="Masalar">
+          <Key>
+            <PropertyRef Name="MasaID" />
+          </Key>
+          <Property Name="MasaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasaAd" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="MasaAciklama" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="Durumu" Type="Boolean" />
+          <Property Name="RezerveMi" Type="Boolean" />
+          <Property Name="EklenmeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="SonİslemTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MasaHareketleri" Relationship="Self.FK_MasaHareketleri_Masalar" FromRole="Masalar" ToRole="MasaHareketleri" />
+        </EntityType>
+        <EntityType Name="Menuler">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuAciklamasi" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Urunler" Relationship="Self.FK_Urunler_Menuler" FromRole="Menuler" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="OdemeHareketleri">
+          <Key>
+            <PropertyRef Name="OdemeID" />
+          </Key>
+          <Property Name="OdemeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SatisKod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OdemeTuru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Odenen" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OdemeAciklamasi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Roller">
+          <Key>
+            <PropertyRef Name="RoID" />
+          </Key>
+          <Property Name="RoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciId" Type="Int32" Nullable="false" />
+          <Property Name="FromText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ControlName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ControlCaption" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Satislar">
+          <Key>
+            <PropertyRef Name="SatisID" />
+          </Key>
+          <Property Name="SatisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SatisKodu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tutar" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Odenen" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Kalan" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SatisAciklamasi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="SonİslemTarihi" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Urunler">
+          <Key>
+            <PropertyRef Name="UrunID" />
+          </Key>
+          <Property Name="UrunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunKodu" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="UrunAdi" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="BirimFiyati" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UrunAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="Menu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menuler" Relationship="Self.FK_Urunler_Menuler" FromRole="Urunler" ToRole="Menuler" />
+        </EntityType>
+        <Association Name="FK_KullaniciHareketleri_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="KullaniciHareketleri" Type="Self.KullaniciHareketleri" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_MasaHareketleri_Masalar">
+          <End Role="Masalar" Type="Self.Masalar" Multiplicity="0..1" />
+          <End Role="MasaHareketleri" Type="Self.MasaHareketleri" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Urunler_Menuler">
+          <End Role="Menuler" Type="Self.Menuler" Multiplicity="0..1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="KafeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="KullaniciHareketleri" EntityType="Self.KullaniciHareketleri" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="MasaHareketleri" EntityType="Self.MasaHareketleri" />
+          <EntitySet Name="Masalar" EntityType="Self.Masalar" />
+          <EntitySet Name="Menuler" EntityType="Self.Menuler" />
+          <EntitySet Name="OdemeHareketleri" EntityType="Self.OdemeHareketleri" />
+          <EntitySet Name="Roller" EntityType="Self.Roller" />
+          <EntitySet Name="Satislar" EntityType="Self.Satislar" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Urunler" EntityType="Self.Urunler" />
+          <AssociationSet Name="FK_KullaniciHareketleri_Kullanicilar" Association="Self.FK_KullaniciHareketleri_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="KullaniciHareketleri" EntitySet="KullaniciHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasaHareketleri_Masalar" Association="Self.FK_MasaHareketleri_Masalar">
+            <End Role="Masalar" EntitySet="Masalar" />
+            <End Role="MasaHareketleri" EntitySet="MasaHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Menuler" Association="Self.FK_Urunler_Menuler">
+            <End Role="Menuler" EntitySet="Menuler" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KafeModelStoreContainer" CdmEntityContainer="KafeEntities">
+          <EntitySetMapping Name="KullaniciHareketleri">
+            <EntityTypeMapping TypeName="KafeModel.KullaniciHareketleri">
+              <MappingFragment StoreEntitySet="KullaniciHareketleri">
+                <ScalarProperty Name="KullaniciHareketID" ColumnName="KullaniciHareketID" />
+                <ScalarProperty Name="KullanciAciklama" ColumnName="KullanciAciklama" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="KafeModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Gorevi" ColumnName="Gorevi" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="AktifMi" ColumnName="AktifMi" />
+                <ScalarProperty Name="KullaniciAciklamasi" ColumnName="KullaniciAciklamasi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasaHareketleri">
+            <EntityTypeMapping TypeName="KafeModel.MasaHareketleri">
+              <MappingFragment StoreEntitySet="MasaHareketleri">
+                <ScalarProperty Name="MasaHareketID" ColumnName="MasaHareketID" />
+                <ScalarProperty Name="SatisKodu" ColumnName="SatisKodu" />
+                <ScalarProperty Name="Miktari" ColumnName="Miktari" />
+                <ScalarProperty Name="BirimFiyati" ColumnName="BirimFiyati" />
+                <ScalarProperty Name="MasaAciklamasi" ColumnName="MasaAciklamasi" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Masalar">
+            <EntityTypeMapping TypeName="KafeModel.Masalar">
+              <MappingFragment StoreEntitySet="Masalar">
+                <ScalarProperty Name="MasaID" ColumnName="MasaID" />
+                <ScalarProperty Name="MasaAd" ColumnName="MasaAd" />
+                <ScalarProperty Name="MasaAciklama" ColumnName="MasaAciklama" />
+                <ScalarProperty Name="Durumu" ColumnName="Durumu" />
+                <ScalarProperty Name="RezerveMi" ColumnName="RezerveMi" />
+                <ScalarProperty Name="EklenmeTarihi" ColumnName="EklenmeTarihi" />
+                <ScalarProperty Name="SonİslemTarihi" ColumnName="SonİslemTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menuler">
+            <EntityTypeMapping TypeName="KafeModel.Menuler">
+              <MappingFragment StoreEntitySet="Menuler">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="MenuAd" ColumnName="MenuAd" />
+                <ScalarProperty Name="MenuAciklamasi" ColumnName="MenuAciklamasi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OdemeHareketleri">
+            <EntityTypeMapping TypeName="KafeModel.OdemeHareketleri">
+              <MappingFragment StoreEntitySet="OdemeHareketleri">
+                <ScalarProperty Name="OdemeID" ColumnName="OdemeID" />
+                <ScalarProperty Name="SatisKod" ColumnName="SatisKod" />
+                <ScalarProperty Name="OdemeTuru" ColumnName="OdemeTuru" />
+                <ScalarProperty Name="Odenen" ColumnName="Odenen" />
+                <ScalarProperty Name="OdemeAciklamasi" ColumnName="OdemeAciklamasi" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roller">
+            <EntityTypeMapping TypeName="KafeModel.Roller">
+              <MappingFragment StoreEntitySet="Roller">
+                <ScalarProperty Name="RoID" ColumnName="RoID" />
+                <ScalarProperty Name="KullaniciId" ColumnName="KullaniciId" />
+                <ScalarProperty Name="FromText" ColumnName="FromText" />
+                <ScalarProperty Name="ControlName" ColumnName="ControlName" />
+                <ScalarProperty Name="ControlCaption" ColumnName="ControlCaption" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Satislar">
+            <EntityTypeMapping TypeName="KafeModel.Satislar">
+              <MappingFragment StoreEntitySet="Satislar">
+                <ScalarProperty Name="SatisID" ColumnName="SatisID" />
+                <ScalarProperty Name="SatisKodu" ColumnName="SatisKodu" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="Odenen" ColumnName="Odenen" />
+                <ScalarProperty Name="Kalan" ColumnName="Kalan" />
+                <ScalarProperty Name="SatisAciklamasi" ColumnName="SatisAciklamasi" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="SonİslemTarihi" ColumnName="SonİslemTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KafeModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urunler">
+            <EntityTypeMapping TypeName="KafeModel.Urunler">
+              <MappingFragment StoreEntitySet="Urunler">
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="UrunKodu" ColumnName="UrunKodu" />
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+                <ScalarProperty Name="BirimFiyati" ColumnName="BirimFiyati" />
+                <ScalarProperty Name="UrunAciklama" ColumnName="UrunAciklama" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Menu" ColumnName="Menu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_KullaniciHareketleri_Kullanicilar" TypeName="KafeModel.FK_KullaniciHareketleri_Kullanicilar" StoreEntitySet="KullaniciHareketleri">
+            <EndProperty Name="Kullanicilar">
+              <ScalarProperty Name="KullaniciID" ColumnName="KullaniciId" />
+            </EndProperty>
+            <EndProperty Name="KullaniciHareketleri">
+              <ScalarProperty Name="KullaniciHareketID" ColumnName="KullaniciHareketID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="KullaniciId" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_MasaHareketleri_Masalar" TypeName="KafeModel.FK_MasaHareketleri_Masalar" StoreEntitySet="MasaHareketleri">
+            <EndProperty Name="Masalar">
+              <ScalarProperty Name="MasaID" ColumnName="MasaId" />
+            </EndProperty>
+            <EndProperty Name="MasaHareketleri">
+              <ScalarProperty Name="MasaHareketID" ColumnName="MasaHareketID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="MasaId" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Urunler_Menuler" TypeName="KafeModel.FK_Urunler_Menuler" StoreEntitySet="Urunler">
+            <EndProperty Name="Menuler">
+              <ScalarProperty Name="MenuID" ColumnName="MenuId" />
+            </EndProperty>
+            <EndProperty Name="Urunler">
+              <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="MenuId" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
